@@ -1,3 +1,3 @@
 # wild-series
 
-Ensemble de quêtes poiur ma formation à la wild code school
+Ensemble de quêtes pour ma formation à la wild code school
