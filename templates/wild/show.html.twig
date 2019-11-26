@@ -4,17 +4,24 @@
 
 {% block body %}
 
-    <div class="media">
+    <div class="media block-main">
         <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
         <div class="media-body">
             <h1 class="mt-0">{{ program.title }}</h1>
             <p>{{ program.summary }}</p>
             <p>Categorie : {{ program.category.name }}</p>
+            {% for season in seasons %}
+                <a href="{{ path('show_season', {'id' : season.id}) }}">Saison : {{ season.id }}</a>
+                <br/>
+            {% endfor %}
+            <a href="{{ path('wild_index') }}">
+                <button class="btn btn-secondary">Retour à l'accueil</button>
+            </a>
         </div>
     </div>
 
     <a href="{{ path('wild_index') }}">
-        Retour à l'accueil
+        <button class="btn btn-secondary">Retour à l'accueil</button>
     </a>
 
 {% endblock %}
