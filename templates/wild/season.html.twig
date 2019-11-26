@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="mainBody">
+        <h1>Saison {{ season.id }} de {{ program.title }} </h1>
+        <p>{{ season.description }}</p>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title">Liste des épisodes:</p>
+                <ul>
+                    {% for episode in episodes  %}
+                        <p class="card-text">Episode {{ episode.number }}: {{ episode.title }}</p>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-secondary" onclick="history.go(-1)">Retour</button>
+{% endblock %}

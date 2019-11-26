@@ -3,6 +3,37 @@
 $primary: #26b169;
 $secondary: #2c2c2c;
 
+* {
+    color: white;
+}
+
 h1 {
-    color: $secondary;
+    color: $primary;
+}
+
+body {
+    background-color: $secondary;
+}
+
+main{
+    margin-left: 20px;
+}
+
+a{
+    color: white;
+    &:hover {
+        text-decoration: none;
+        color: $primary;
+    }
+}
+
+.card{
+    width: 40%;
+    background-color: $secondary;
+    border: $primary;
+    margin-left: 10%;
+}
+
+.btn-secondary{
+    margin-top: 30px;
 }
