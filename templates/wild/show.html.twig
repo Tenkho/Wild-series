@@ -14,9 +14,18 @@
                 <a href="{{ path('show_season', {'id' : season.id}) }}">Saison : {{ season.id }}</a>
                 <br/>
             {% endfor %}
+            <strong>Acteur :</strong>
+            <ul>
+                {% for actor in program.actors %}
+                    <li><a href="{{ path('show_actor', {'id': actor.id}) }}">{{ actor.name }} </a></li>
+                {% else %}
+                    <li>Aucun acteur pour cette série</li>
+                {% endfor %}
+            </ul>
             <a href="{{ path('wild_index') }}">
                 <button class="btn btn-secondary">Retour à l'accueil</button>
             </a>
+
         </div>
     </div>
 

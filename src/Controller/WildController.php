@@ -8,18 +8,17 @@ use App\Entity\Program;
 use App\Entity\Category;
 use App\Entity\Season;
 use App\Entity\Episode;
+use App\Entity\Actor;
 use App\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/wild")
- */
+
 class WildController extends AbstractController
 {
     /**
-     * @Route("/", name="wild_index")
+     * @Route("/wild/", name="wild_index")
      *
      *@return Response
      */
@@ -46,7 +45,7 @@ class WildController extends AbstractController
 
     /**
      * @param string $slug The slugger
-     * @Route("/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="wild_show")
+     * @Route("/wild/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="wild_show")
      * @return Response
      */
     public function showByProgram(?string $slug):Response
@@ -156,5 +155,18 @@ class WildController extends AbstractController
             'program'=>$program,
         ]);
 
+    }
+
+    /**
+     *
+     * @Route("/actor/{id}", name="show_actor").
+     */
+    public function showActor(Actor $actor) :Response
+    {
+        $programs = $actor->getPrograms();
+        return $this->render('wild/actor.html.twig', [
+            'programs' => $programs,
+            'actor' => $actor,
+        ]);
     }
 }
