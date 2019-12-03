@@ -115,7 +115,7 @@ class WildController extends AbstractController
     /**
      * @param int $id
      * @return Response
-     * @Route("/season/{id<^[0-9-]+$>}", defaults={"id" = null}, name="show_season")
+     * @Route("wild/season/{id<^[0-9-]+$>}", defaults={"id" = null}, name="show_season")
      */
     public function showBySeason(int $id) : Response
     {
