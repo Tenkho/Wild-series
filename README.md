@@ -22,3 +22,6 @@ https://drive.google.com/file/d/1PoztKWlbKiZJBblFguF4G6vA8oYmfmkW/view
 
 Quête 15:
 https://drive.google.com/file/d/1n4yQ0UMx209crJvQ2wzktH0oiEE076Xi/view
+
+Quête 16:
+https://drive.google.com/file/d/1SohEpmG8-4hAmeQsqh1C0Xd1NEo6L8gx/view

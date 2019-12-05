@@ -8,5 +8,5 @@
     <p>Résumé :</p>
     <p>{{ episode.synopsis }}</p>
     <a href="/wild/season/{{ season.id }}"><button class="btn btn-secondary">Retour vers la saison</button></a>
-    <a href="/wild/show/{{ program.title |replace({' ':'-'}) |lower }}" class="btnReturn"><button class="btn btn-secondary">Retour vers la série</button></a>
+    <a href="/wild/show/{{ program.slug }}" class="btnReturn"><button class="btn btn-secondary">Retour vers la série</button></a>
 {% endblock %}

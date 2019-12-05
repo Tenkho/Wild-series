@@ -15,10 +15,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
+/**
+ * @Route("/wild")
+ **/
 class WildController extends AbstractController
 {
     /**
-     * @Route("/wild/", name="wild_index")
+     * @Route("/", name="wild_index")
      *
      *@return Response
      */
@@ -45,7 +48,7 @@ class WildController extends AbstractController
 
     /**
      * @param string $slug The slugger
-     * @Route("/wild/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="wild_show")
+     * @Route("/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="wild_show")
      * @return Response
      */
     public function showByProgram(?string $slug):Response
@@ -115,7 +118,7 @@ class WildController extends AbstractController
     /**
      * @param int $id
      * @return Response
-     * @Route("wild/season/{id<^[0-9-]+$>}", defaults={"id" = null}, name="show_season")
+     * @Route("/season/{id<^[0-9-]+$>}", defaults={"id" = null}, name="show_season")
      */
     public function showBySeason(int $id) : Response
     {
@@ -142,7 +145,7 @@ class WildController extends AbstractController
 
     /**
      *
-     * @Route("/episode/{id}",  name="show_episode")
+     * @Route("/episode/{slug}",  name="show_episode")
      *
      */
     public function showEpisode(Episode $episode) :Response
@@ -159,7 +162,7 @@ class WildController extends AbstractController
 
     /**
      *
-     * @Route("/actor/{id}", name="show_actor").
+     * @Route("/actor/{slug}", name="show_actor").
      */
     public function showActor(Actor $actor) :Response
     {

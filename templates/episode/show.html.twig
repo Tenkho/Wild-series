@@ -28,7 +28,7 @@
 
     <a href="{{ path('episode_index') }}"><button class="btn btn-secondary">Retour à la liste</button></a>
 
-    <a href="{{ path('episode_edit', {'id': episode.id}) }}"><button class="btn btn-secondary">Editer</button></a>
+    <a href="{{ path('episode_edit', {'slug': episode.slug}) }}"><button class="btn btn-secondary">Editer</button></a>
 
     {{ include('episode/_delete_form.html.twig') }}
 {% endblock %}
