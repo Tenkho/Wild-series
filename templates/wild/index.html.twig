@@ -6,13 +6,15 @@
     <h1>Toutes les séries : </h1>
     {% for program in programs %}
         <div>
-            <a href="/wild/show/{{ program.title |replace({' ':'-'}) |lower }}"><h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2></a>
+            <a href="/wild/show/{{ program.slug }}"><h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2></a>
             <p>{{ program.summary }}</p>
         </div>
     {% else %}
         Aucune série trouvée.
     {% endfor %}
+
     <a href="{{ path('app_index') }}">
         <button class="btn btn-secondary">Retour à l'accueil</button>
     </a>
+
 {% endblock %}

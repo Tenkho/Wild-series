@@ -9,11 +9,11 @@
                 <p class="card-title">Liste des épisodes:</p>
                 <ul>
                     {% for episode in episodes  %}
-                        <a href="/wild/episode/{{ episode.id }}"><p class="card-text">Episode {{ episode.number }}: {{ episode.title }}</p></a>
+                        <a href="/wild/episode/{{ episode.slug }}"><p class="card-text">Episode {{ episode.number }}: {{ episode.title }}</p></a>
                     {% endfor %}
                 </ul>
             </div>
         </div>
     </div>
-    <a href="/wild/show/{{ program.title |replace({' ':'-'}) |lower }}"><button type="button" class="btn btn-secondary">Retour</button></a>
+    <a href="/wild/show/{{ program.slug }}"><button type="button" class="btn btn-secondary">Retour</button></a>
 {% endblock %}

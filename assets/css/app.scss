@@ -2,9 +2,10 @@
 
 $primary: #26b169;
 $secondary: #2c2c2c;
+$light: #FFFFFF;
 
 * {
-    color: white;
+    color: $light;
 }
 
 h1 {
@@ -20,7 +21,7 @@ main{
 }
 
 a{
-    color: white;
+    color: $light;
     &:hover {
         text-decoration: none;
         color: $primary;
@@ -30,7 +31,6 @@ a{
 .card{
     width: 40%;
     background-color: $secondary;
-    border: $primary;
     margin-left: 10%;
 }
 

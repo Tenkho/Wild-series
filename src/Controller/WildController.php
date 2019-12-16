@@ -4,17 +4,26 @@
 
 namespace App\Controller;
 
-use App\Entity\Program;
+use App\Entity\Actor;
 use App\Entity\Category;
-use App\Entity\Season;
+use App\Entity\Comment;
 use App\Entity\Episode;
+use App\Entity\Program;
+use App\Entity\Season;
+use App\Entity\User;
+use App\Form\CategoryType;
+use App\Form\CommentType;
+use App\Form\ProgramSearchType;
+use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 /**
  * @Route("/wild")
- */
+ **/
 class WildController extends AbstractController
 {
     /**
@@ -32,8 +41,14 @@ class WildController extends AbstractController
                 "No program found in program's table"
             );
         }
+
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
+
         return $this->render("wild/index.html.twig", [
-                "programs" => $programs]
+                "programs" => $programs,
+                'form' => $form->createView(),
+                ]
         );
     }
 
@@ -136,18 +151,62 @@ class WildController extends AbstractController
 
     /**
      *
-     * @Route("/episode/{id}",  name="show_episode")
+     * @Route("/episode/{slug}",  name="show_episode")
      *
      */
-    public function showEpisode(Episode $episode) :Response
+    public function showEpisode(Episode $episode): Response
     {
-        $season = $episode->getSeason();
-        $program = $season->getProgram();
+        $comments = $episode->getComments();
+        $season   = $episode->getSeason();
+        $program  = $season->getProgram();
         return $this->render('wild/episode.html.twig', [
-            'episode'=>$episode,
-            'season'=>$season,
-            'program'=>$program,
+            'episode'  => $episode,
+            'season'   => $season,
+            'program'  => $program,
+            'comments' => $comments,
         ]);
+    }
 
+    /**
+     * @Route("/comment/{id}", name="wild_comment", methods={"GET","POST"})
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function newComment(Request $request, $id): Response
+    {
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $author = $this->getUser();
+            $comment->setUser($author);
+            $episode = $this->getDoctrine()->getRepository(Episode::class)->find($id);
+            $comment->setEpisode($episode);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+            $slug = $episode->getSlug();
+            return $this->redirectToRoute('show_episode', ['slug' => $slug]);
+        }
+
+        return $this->render('form/formComment.html.twig', [
+            'comment' => $comment,
+            'form'    => $form->createView(),
+        ]);
+    }
+
+    /**
+     *
+     * @Route("/actor/{slug}", name="show_actor").
+     */
+    public function showActor(Actor $actor) :Response
+    {
+        $programs = $actor->getPrograms();
+        return $this->render('wild/actor.html.twig', [
+            'programs' => $programs,
+            'actor' => $actor,
+        ]);
     }
 }
