@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="mainBody">
+        <h1>Saison {{ season.number }} de {{ program.title }} </h1>
+        <p>{{ season.description }}</p>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title">Liste des épisodes:</p>
+                <ul>
+                    {% for episode in episodes  %}
+                        <a href="/wild/episode/{{ episode.slug }}"><p class="card-text">Episode {{ episode.number }}: {{ episode.title }}</p></a>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="/wild/show/{{ program.slug }}"><button type="button" class="btn btn-secondary">Retour</button></a>
+{% endblock %}

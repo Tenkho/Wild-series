@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ actor.name }}{% endblock %}
+{% block body %}
+
+    <h1>{{ actor.name }}</h1>
+    <h2>Joue dans les séries suivantes:</h2>
+    <ul>
+        {% for program in programs %}
+            <li>
+                <a href="{{ path('wild_show', {'slug':program.slug}) }}">{{ program.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

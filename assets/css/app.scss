@@ -2,7 +2,42 @@
 
 $primary: #26b169;
 $secondary: #2c2c2c;
+$light: #FFFFFF;
+
+* {
+    color: $light;
+}
 
 h1 {
-    color: $secondary;
+    color: $primary;
+}
+
+body {
+    background-color: $secondary;
+}
+
+main{
+    margin: 0 20px;
+}
+
+a{
+    color: $light;
+    &:hover {
+        text-decoration: none;
+        color: $primary;
+    }
+}
+
+.card{
+    width: 40%;
+    background-color: $secondary;
+    margin-left: 10%;
+}
+
+.btn-secondary{
+    margin-top: 30px;
+}
+
+.btnReturn{
+    margin-left: 20px;
 }
