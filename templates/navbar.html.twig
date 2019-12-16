@@ -1,16 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Wild-Series</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="/wild/">Séries<span class="sr-only">(current)</span></a>
             </li>
         </ul>
         {% if app.user %}
-            {{ app.user.email }}
-            <a href="{{ path('app_logout') }}"><button class="btn btn-secondary ml-2 mt-0">Se déconnecter</button></a>
+            <a class="nav-link">{{ app.user.email }}</a>
+            <a class="nav-link" href="{{ path('my_profil') }}">Mon profil</a>
+            <a href="{{ path('app_logout') }}"><button class="btn btn-secondary mt-0">Se déconnecter</button></a>
         {% else %}
-            <a href="{{ path('app_login') }}"><button class="btn btn-secondary ml-2 mt-0">Se connecter</button></a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Connexion
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{{ path('app_login')}}">Se connecter</a>
+                <a class="dropdown-item" href="{{ path('app_register')}}">S'inscrire</a>
+            </div>
+        </li>
         {% endif %}
     </div>
 </nav>

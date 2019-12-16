@@ -3,11 +3,22 @@
 {% block body %}
     <h1>Bienvenue sur Wild Series</h1>
 
-    <a href="{{ path('wild_show', { 'slug': "walking-dead" }) }}">
-        Testing show() method from WildController with a real program s slug.
-    </a>
-    <br>
-    <a href="{{ path('wild_index') }}">
-        Testing index() method from WildController to view all programs.
-    </a>
+    <h2 class="m-5">Les Dernières sorties :</h2>
+    <div class="container-fluid">
+        <div class="row">
+            {% for program in programs %}
+                <div class="col-lg-4 ml-auto mt-3">
+                    <div class="panel">
+                        <a href="{{ path('wild_show', {'slug' : program.slug}) }}"><div class="panel-heading bg-secondary text-light p-3">
+                            <h2>{{ program.title }}</h2>
+                        </div>
+                        </a>
+                        <div class="panel-body">
+                            <p class="pull-left">{{ program.summary }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -28,6 +28,10 @@ a{
     }
 }
 
+li{
+    list-style-type: none;
+}
+
 .card{
     width: 40%;
     background-color: $secondary;
