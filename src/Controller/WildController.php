@@ -15,6 +15,7 @@ use App\Form\CategoryType;
 use App\Form\CommentType;
 use App\Form\ProgramSearchType;
 use App\Service\Slugify;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -168,6 +169,19 @@ class WildController extends AbstractController
     }
 
     /**
+     *
+     * @Route("/actor/{slug}", name="show_actor").
+     */
+    public function showActor(Actor $actor) :Response
+    {
+        $programs = $actor->getPrograms();
+        return $this->render('wild/actor.html.twig', [
+            'programs' => $programs,
+            'actor' => $actor,
+        ]);
+    }
+
+    /**
      * @Route("/comment/{id}", name="wild_comment", methods={"GET","POST"})
      * @param Request $request
      * @param $id
@@ -198,15 +212,18 @@ class WildController extends AbstractController
     }
 
     /**
-     *
-     * @Route("/actor/{slug}", name="show_actor").
+     * @Route("/deleteComment/{id}", name="wild_delete", methods={"DELETE", "GET"})
+     * @param EntityManagerInterface $entityManager
+     * @param int $id
+     * @return Response
      */
-    public function showActor(Actor $actor) :Response
+    public function delete(EntityManagerInterface $entityManager, int $id): Response
     {
-        $programs = $actor->getPrograms();
-        return $this->render('wild/actor.html.twig', [
-            'programs' => $programs,
-            'actor' => $actor,
-        ]);
+        $comment = $this->getDoctrine()->getRepository(Comment::class)->find($id);
+        $episode= $comment->getEpisode();
+        $slug = $episode->getSlug();
+        $entityManager->remove($comment);
+        $entityManager->flush();
+        return $this->redirectToRoute('show_episode', ['slug' => $slug]);
     }
 }

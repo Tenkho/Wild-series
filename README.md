@@ -31,3 +31,6 @@ https://drive.google.com/file/d/1GHgvuviKF4GWnuP7C558kimwhQ1SIJv6/view
 
 Quête 18:
 https://drive.google.com/file/d/1euF9hHvK3ooap9ccxpHkX4jAMlZ9NdWP/view
+
+Quête 19:
+https://drive.google.com/file/d/1K9lo4qIXln95WxxIDiltNt1H-OBee1CB/view

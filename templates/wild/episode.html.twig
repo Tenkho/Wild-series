@@ -13,12 +13,18 @@
             <p>Commentaire {{ loop.index }} : {{ comment.comment }}</p>
             <p>Note : {{ comment.rate }}</p>
             <p>Commentaire de : {{ comment.user.email }}</p>
+            {% if is_granted("ROLE_SUBSCRIBER") %}
+                {% if  (app.user.email == comment.user.email) or (is_granted('ROLE_ADMIN')) %}
+                    <a href="{{ path('wild_delete', {'id' : comment.id}) }}"><button class="btn btn-danger">Supprimer le commentaire</button></a>
+                {%endif%}
+            {%endif%}
         </div>
     {% endfor %}
 
     {% if app.user %}
-        <a href="{{ path('wild_comment', {'id' : episode.id}) }}"><button class="btn btn-secondary">Laisser un Commentaire</button></a>
-        <br/>
+        <div>
+            <a href="{{ path('wild_comment', {'id' : episode.id}) }}"><button class="btn btn-secondary">Laisser un Commentaire</button></a>
+        </div>
     {% endif %}
 
     <a href="/wild/season/{{ season.id }}"><button class="btn btn-secondary">Retour vers la saison</button></a>
