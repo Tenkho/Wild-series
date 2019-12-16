@@ -28,3 +28,6 @@ https://drive.google.com/file/d/1SohEpmG8-4hAmeQsqh1C0Xd1NEo6L8gx/view
 
 Quête 17:
 https://drive.google.com/file/d/1GHgvuviKF4GWnuP7C558kimwhQ1SIJv6/view
+
+Quête 18:
+https://drive.google.com/file/d/1euF9hHvK3ooap9ccxpHkX4jAMlZ9NdWP/view
