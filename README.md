@@ -40,3 +40,6 @@ https://drive.google.com/file/d/1d4xfvd14Q3pUKANptF32Dt2Ls1idzvgN/view
 
 Quête 21:
 https://drive.google.com/file/d/1n6FMEISIV_bSg5Z8DmDLq-AlbieisZna/view
+
+Quête 22:
+https://drive.google.com/file/d/1z0radlCiP_-_KBl50bNxayYgdtPGJ0c1/view

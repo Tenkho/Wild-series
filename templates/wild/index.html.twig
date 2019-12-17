@@ -8,6 +8,14 @@
         <div>
             <a href="/wild/show/{{ program.slug }}"><h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2></a>
             <p>{{ program.summary }}</p>
+                <p>Liste des Acteurs : </p>
+                {% if program.actors|length > 0 %}
+                    <p>{% for actor in program.actors %}
+                        {{ actor.name }},
+                    {% endfor %}</p>
+                {% else %}
+                    <p>Aucun acteur connu dans cette série</p>
+                {% endif %}
         </div>
     {% else %}
         Aucune série trouvée.
