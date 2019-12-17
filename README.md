@@ -37,3 +37,6 @@ https://drive.google.com/file/d/1K9lo4qIXln95WxxIDiltNt1H-OBee1CB/view
 
 Quête 20:
 https://drive.google.com/file/d/1d4xfvd14Q3pUKANptF32Dt2Ls1idzvgN/view
+
+Quête 21:
+https://drive.google.com/file/d/1n6FMEISIV_bSg5Z8DmDLq-AlbieisZna/view
